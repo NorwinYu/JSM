@@ -10,7 +10,7 @@
     </parent>
     <groupId>cn.norwin</groupId>
     <artifactId>jsm</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>jsm</name>
     <description>Java Source Code Metrics Tool</description>
 
@@ -19,6 +19,9 @@
     </properties>
 
     <dependencies>
+
+        <!-- Spring Boot Starter -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -29,6 +32,15 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Java Parser  -->
+
+        <dependency>
+            <groupId>com.github.javaparser</groupId>
+            <artifactId>javaparser-core</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
