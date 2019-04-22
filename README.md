@@ -1,17 +1,17 @@
-# Java Source Code Metrics Tool  (JSM)
+# :loop: Java Source Code Metrics Tool  (JSM)
 
 ```
 0.0.1
 ```
 
-## About
+## :mortar_board: About
 
 - This tool was developed under the requirements of my UoN (University of Nottingham) undergraduate dissertation project.
 - Aims
   - Input: Java Source Code Files `.java`
   - Output: A `.csv` output file contains common metrics results for input files as a Machine Learning research feature selection process.
 
-## Get Started
+## :hotsprings: Get Started
 
 ### Before Started 
 
@@ -32,11 +32,11 @@ mvn package
 java -jar target/JSM-0.0.1.jar
 ```
 
-## Metrics Detect
+## :mag_right: Metrics Detect
 
 Updating
 
-## Environment and Dependence
+## :hammer: Environment and Dependence
 
 - Java 
   - Version - `1.8`
