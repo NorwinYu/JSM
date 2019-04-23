@@ -48,5 +48,8 @@ Updating
 - JavaParser - see [javaparser.org](<https://javaparser.org/>)
   - Version - `3.12.0`
   - JavaParser is used to generate, analyze, and process Java code as it said.
-  -  LGPL License or the Apache License
+  - LGPL License or the Apache License
+- Jcommander - see [jcommander](<http://jcommander.org/>)
+  - Version - `1.72`
+  - Jcommander is used to easily parse command line parameters
 
