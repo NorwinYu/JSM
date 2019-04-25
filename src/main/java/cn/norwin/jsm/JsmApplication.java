@@ -1,10 +1,8 @@
 package cn.norwin.jsm;
 
-import cn.norwin.jsm.model.Features;
-import cn.norwin.jsm.output.csv.CSVOutput;
+import cn.norwin.jsm.model.JsmFeaturesMap;
+import cn.norwin.jsm.output.csv.JsmCSVOutput;
 import com.beust.jcommander.ParameterException;
-import com.sun.xml.internal.xsom.impl.scd.Step;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
@@ -14,6 +12,7 @@ import com.beust.jcommander.converters.FileConverter;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class JsmApplication {
     )
     private File outputFile;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         JsmApplication jsmApplication = new JsmApplication();
 
@@ -58,20 +57,20 @@ public class JsmApplication {
 
     public void analyse() {
 
-        String searchPath = sourceDir.getPath();
+        List<JsmFeaturesMap> jsmFeaturesMapList = new ArrayList<>();
 
-        List<Features> featuresList = new ArrayList<>();
-        Features features = new Features((long)0,0,0,0,0,(long)0,(long)0,(long)0,(long)0,(long)0,(long)0);
-        featuresList.add(features);
+        if (outputFile.getPath().endsWith(".csv")) {
 
-        String outputPath = outputFile.getPath();
-
-        if (outputPath.endsWith(".csv")) {
             try {
-                CSVOutput.exportCSVFile(featuresList, outputPath);
-            } catch (Exception e){
+                Files.walkFileTree(sourceDir.toPath(), new JsmFileVisitor(jsmFeaturesMapList));
 
+                JsmCSVOutput.exportCSVFile(jsmFeaturesMapList, outputFile.getPath());
             }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         }
         else {
             printHelp("[Error]: Invalid output file type.");
